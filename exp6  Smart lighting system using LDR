@@ -1,0 +1,38 @@
+1) Program to Read Data from LDR and Print on Serial Monitor
+int sensorValue = 0;
+void setup()
+{
+    Serial.begin(9600);
+    pinMode(A0, INPUT);
+    pinMode(5, OUTPUT);
+}
+void loop()
+{
+    sensorValue = analogRead(A0);
+    Serial.println(sensorValue);
+    sensorValue = map(sensorValue, 26, 923, 255, 0);
+    Serial.println(sensorValue);
+    analogWrite(5, sensorValue);
+}
+2) Program for Automatic Streetlight Using LDR
+int sensorValue = 0;
+void setup()
+{
+    Serial.begin(9600);
+    pinMode(A0, INPUT);
+    pinMode(5, OUTPUT);
+}
+void loop()
+{
+    sensorValue = analogRead(A0);
+    Serial.println(sensorValue);
+    if (sensorValue < 500)
+    {
+        digitalWrite(5, LOW);
+    }
+    else
+    {
+        digitalWrite(5, HIGH);
+    }
+    delay(200);
+}
