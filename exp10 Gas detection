@@ -1,0 +1,26 @@
+int gasPin = A0;
+int led = 12;
+int buzzerPin = 13;
+void setup()
+{
+    pinMode(buzzerPin, OUTPUT);
+    pinMode(led, OUTPUT);
+    Serial.begin(9600);
+}
+void loop()
+{
+    int gasValue = analogRead(gasPin);
+    Serial.print("Gas Value: ");
+    Serial.println(gasValue);
+    if (gasValue > 300)
+    {
+        digitalWrite(buzzerPin, HIGH);
+        digitalWrite(led, HIGH);
+    }
+    else
+    {
+        digitalWrite(buzzerPin, LOW);
+        digitalWrite(led, LOW);
+    }
+    delay(250);
+}
