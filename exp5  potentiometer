@@ -1,0 +1,19 @@
+int potreading = 0;
+
+void setup()
+{
+    Serial.begin(9600);
+    pinMode(9, OUTPUT);
+    pinMode(A0, INPUT);
+}
+
+void loop()
+{
+    potreading = analogRead(A0);
+    Serial.println(potreading);
+
+    potreading = map(potreading, 0, 1023, 0, 255);
+    Serial.println(potreading);
+
+    analogWrite(9, potreading);
+}
